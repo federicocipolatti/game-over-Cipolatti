@@ -5,7 +5,8 @@ import { ButtonNav } from '../ButtonNav/ButtonNav';
 import { CartWidget } from '../CartWidget/CartWidget';
 
 export const NavBar = () => {
-    return <Navbar bg="light" variant="light">
+    return (
+        <Navbar bg="light" variant="light">
             <Container className="NavBar">
             <Navbar.Brand href="#home" className='iconNav'><img src="img/game-over.png" alt='iconNav' style={{width: '100px'}}/></Navbar.Brand>
                 <Nav className="me-auto">
@@ -16,4 +17,5 @@ export const NavBar = () => {
                 <CartWidget/>
             </Container>
         </Navbar>
+    );
 }

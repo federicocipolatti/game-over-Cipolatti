@@ -14,7 +14,8 @@ export const ItemCount = ({stock}) => {
     setNum(num-1);
   }
 
-  return <Card style={{ width: '18rem' }}>
+  return (
+    <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="img/game.ico"/>
         <Card.Body>
             <Card.Title>Item</Card.Title>
@@ -29,4 +30,5 @@ export const ItemCount = ({stock}) => {
             <Button variant="outline-dark">AÑADIR AL CARRITO</Button>
         </Card.Body>
     </Card>
+  );
 }
