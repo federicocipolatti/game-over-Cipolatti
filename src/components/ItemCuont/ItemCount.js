@@ -14,16 +14,7 @@ export const ItemCount = ({stock}) => {
     setNum(num-1);
   }
 
-  return <>
-    {/* <div className='count'>
-      <h3>{num}</h3>
-    </div>
-      <div className='buttons'>
-        <button className='btn btn-light btn-outline-dark rounded-0' onClick={handleDecrement} disabled={num===0}>-1</button>
-        <button className='btn btn-light btn-outline-dark rounded-0' onClick={handleIncrement} disabled={num>=10}>+1</button>
-      </div>
-      <button className='btnDetail btn-light btn-outline-dark rounded-0'disabled={num===0}>AÑADIR AL CARRITO</button>  */}
-      <Card style={{ width: '18rem' }}>
+  return <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="img/game.ico"/>
         <Card.Body>
             <Card.Title>Item</Card.Title>
@@ -38,5 +29,4 @@ export const ItemCount = ({stock}) => {
             <Button variant="outline-dark">AÑADIR AL CARRITO</Button>
         </Card.Body>
     </Card>
-    </> 
 }
