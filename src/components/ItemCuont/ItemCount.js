@@ -27,6 +27,7 @@ export const ItemCount = ({stock}) => {
         <Card.Img variant="top" src="img/game.ico"/>
         <Card.Body>
             <Card.Title>Item</Card.Title>
+            <Card.Subtitle>Stock disponible {stock}</Card.Subtitle>
             <Card.Text>
                 {num}
             </Card.Text>
