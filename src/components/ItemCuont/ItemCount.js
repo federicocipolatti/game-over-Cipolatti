@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 
 export const ItemCount = ({stock}) => {
 
-  let [num, setNum] = useState(1);
+  const [num, setNum] = useState(1);
 
   let handleIncrement = ()=> {
     setNum(num+1);
