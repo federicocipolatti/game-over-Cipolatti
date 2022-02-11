@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import './ItemCount.css';
 import { Card, Button } from 'react-bootstrap';
 
-export const ItemCount = ({stock}) => {
+export const ItemCount = ({stock, initial, onAdd}) => {
 
-  const [num, setNum] = useState(1);
+  const [num, setNum] = useState(initial);
 
-  let handleIncrement = ()=> {
+  const handleIncrement = ()=> {
     setNum(num+1);
   }
 
-  let handleDecrement = ()=> {
+  const handleDecrement = ()=> {
     setNum(num-1);
   }
 
@@ -24,10 +24,10 @@ export const ItemCount = ({stock}) => {
                 {num}
             </Card.Text>
             <div>
-                <Button className='btnCart' variant="outline-dark" onClick={handleDecrement} disabled={num===0}>-</Button>
+                <Button className='btnCart' variant="outline-dark" onClick={handleDecrement} disabled={num<=initial}>-</Button>
                 <Button className='btnCart' variant="outline-dark" onClick={handleIncrement} disabled={num>=stock}>+</Button>
             </div>
-            <Button variant="outline-dark">AÑADIR AL CARRITO</Button>
+            <Button variant="outline-dark" onClick={()=>onAdd(num)}>AÑADIR AL CARRITO</Button>
         </Card.Body>
     </Card>
   );
