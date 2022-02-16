@@ -15,10 +15,10 @@ export const ItemCount = ({stock = '10', initial = '1', onAdd}) => {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="img/game.ico"/>
+    <Card style={{ width: '18rem' }} className='itemCount'>
+        {/* <Card.Img variant="top" src="img/game.ico"/> */}
         <Card.Body>
-            <Card.Title>Item</Card.Title>
+            {/* <Card.Title>detail.title</Card.Title> */}
             <Card.Subtitle>Stock disponible {stock}</Card.Subtitle>
             <Card.Text>
                 {num}
