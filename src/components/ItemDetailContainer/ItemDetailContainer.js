@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import './ItemListContainer.css';
-import { ItemList } from "./ItemList/ItemList";
+import './ItemDetailContainer.css';
+import { ItemDetail } from "./ItemDetail/ItemDetail";
 import { Spinner } from "react-bootstrap";
 
 const promiseContainer = () => {
@@ -22,7 +22,7 @@ const promiseContainer = () => {
                     titulo: 'Producto 2',
                     subtitulo: 'Hola soy el producto 2',
                     img: '/img/game.ico',
-                    mostrar: true,
+                    mostrar: false,
                     precio: '$1200,00'
                 },
             
@@ -31,7 +31,7 @@ const promiseContainer = () => {
                     titulo: 'Producto 3',
                     subtitulo: 'Hola soy el producto 3',
                     img: '/img/game.ico',
-                    mostrar: true,
+                    mostrar: false,
                     precio: '$1500,00'
                 },
 
@@ -40,7 +40,7 @@ const promiseContainer = () => {
                     titulo: 'Producto 4',
                     subtitulo: 'Hola soy el producto 4',
                     img: '/img/game.ico',
-                    mostrar: true,
+                    mostrar: false,
                     precio: '$2000,00'
                 },
 
@@ -49,7 +49,7 @@ const promiseContainer = () => {
                     titulo: 'Producto 5',
                     subtitulo: 'Hola soy el producto 5',
                     img: '/img/game.ico',
-                    mostrar: true,
+                    mostrar: false,
                     precio: '$2400,00'
                 },
 
@@ -58,7 +58,7 @@ const promiseContainer = () => {
                     titulo: 'Producto 6',
                     subtitulo: 'Hola soy el producto 6',
                     img: '/img/game.ico',
-                    mostrar: true,
+                    mostrar: false,
                     precio: '$3500,00'
                 }
             ]
@@ -66,11 +66,7 @@ const promiseContainer = () => {
     })
 }
 
-export const ItemListContainer = ({ mensaje }) => {
-
-    const handleOnAdd = (num) => {
-        console.log(`Se agregaron ${num} productos`);
-      }
+export const ItemDetailContainer = ({ mensaje }) => {
 
     const [productos, setProductos] = useState([]); 
 
@@ -85,9 +81,9 @@ export const ItemListContainer = ({ mensaje }) => {
         cambioData();
     },[])
 
-    return <div className="ItemListContainer">
+    return <div className="ItemDetailContainer">
         {productos.length === 0 ? (<Spinner animation="border"/>) : (  
-            <ItemList productos={productos}/>   
+            <ItemDetail productos={productos}/>   
         )} 
     </div>
 }

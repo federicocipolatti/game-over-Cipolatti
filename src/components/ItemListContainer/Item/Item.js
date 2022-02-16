@@ -1,7 +1,6 @@
 import React from 'react';
 import './Item.css';
 import { Card, Button } from 'react-bootstrap';
-import { ItemCount } from '../ItemCuont/ItemCount';
 
 export const Item = ({item}) => {
 

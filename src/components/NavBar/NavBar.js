@@ -1,8 +1,8 @@
 import React from 'react';
 import './NavBar.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { ButtonNav } from '../ButtonNav/ButtonNav';
-import { CartWidget } from '../CartWidget/CartWidget';
+import { ButtonNav } from './ButtonNav/ButtonNav';
+import { CartWidget } from './CartWidget/CartWidget';
 
 export const NavBar = () => {
     return (
