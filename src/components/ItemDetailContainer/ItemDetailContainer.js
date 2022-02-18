@@ -35,7 +35,6 @@ const promiseContainer = () => {
                     precio: '$1500,00'
                 },
 
-
                 {
                     id: '4',
                     titulo: 'Producto 4',
@@ -45,7 +44,6 @@ const promiseContainer = () => {
                     precio: '$2000,00'
                 },
 
-
                 {
                     id: '5',
                     titulo: 'Producto 5',
@@ -54,7 +52,6 @@ const promiseContainer = () => {
                     mostrar: false,
                     precio: '$2400,00'
                 },
-
 
                 {
                     id: '6',
@@ -71,12 +68,12 @@ const promiseContainer = () => {
 
 export const ItemDetailContainer = () => {
 
-    const [producto, setProducto] = useState({}); 
+    const [productos, setProductos] = useState([]); 
 
     const cambioData = () => {
         promiseContainer().then(data => {
             const dataNew = data.filter(element => element.mostrar)
-            setProducto(dataNew)
+            setProductos(dataNew)
         })
     }
 
@@ -85,8 +82,8 @@ export const ItemDetailContainer = () => {
     },[])
 
     return <div className="ItemDetailContainer">
-        {producto.length === 0 ? (<Spinner animation="border"/>) : (  
-            <ItemDetail producto={producto}/>   
+        {productos.length === 0 ? (<Spinner animation="border"/>) : (  
+            <ItemDetail productos={productos}/>   
         )} 
     </div>
 }
