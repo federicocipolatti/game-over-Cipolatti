@@ -1,5 +1,44 @@
 .Item{
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 10px;
+}
+
+.card-item{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: 10px;
+}
+
+.card-img-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.card-body-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.card-title-item{
+    font-size: 1.5em;
+    margin-bottom: 50px;
+}
+
+.card-subt-item{
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
+
+.card-text-item{
+    font-size: 1em;
+    margin-bottom: 25px;
 }

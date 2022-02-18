@@ -3,7 +3,9 @@ import './ItemDetailContainer.css';
 import { ItemDetail } from "./ItemDetail/ItemDetail";
 import { Spinner } from "react-bootstrap";
 
+
 const promiseContainer = () => {
+
 
     return new Promise ((resolve, reject) => {
         setTimeout(() => resolve(
@@ -35,6 +37,7 @@ const promiseContainer = () => {
                     precio: '$1500,00'
                 },
 
+
                 {
                     id: '4',
                     titulo: 'Producto 4',
@@ -44,6 +47,7 @@ const promiseContainer = () => {
                     precio: '$2000,00'
                 },
 
+
                 {
                     id: '5',
                     titulo: 'Producto 5',
@@ -52,6 +56,7 @@ const promiseContainer = () => {
                     mostrar: false,
                     precio: '$2400,00'
                 },
+
 
                 {
                     id: '6',
@@ -66,24 +71,29 @@ const promiseContainer = () => {
     })
 }
 
-export const ItemDetailContainer = ({ mensaje }) => {
 
-    const [productos, setProductos] = useState([]); 
+export const ItemDetailContainer = () => {
+
+
+    const [product, setProduct] = useState({}); 
+
 
     const cambioData = () => {
         promiseContainer().then(data => {
             const dataNew = data.filter(element => element.mostrar)
-            setProductos(dataNew)
+            setProduct(dataNew)
         })
     }
+
 
     useEffect(() => {
         cambioData();
     },[])
 
+
     return <div className="ItemDetailContainer">
-        {productos.length === 0 ? (<Spinner animation="border"/>) : (  
-            <ItemDetail productos={productos}/>   
+        {product.length === 0 ? (<Spinner animation="border"/>) : (  
+            <ItemDetail product={product}/>   
         )} 
     </div>
 }
