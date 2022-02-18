@@ -2,7 +2,7 @@ import React from 'react';
 import { Item } from '../Item/Item';
 import './ItemList.css';
 
-export const ItemList = ({products}) => {
+export const ItemList = ({ products }) => {
 
     return (
         <div className='ItemList'>

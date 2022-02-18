@@ -19,9 +19,11 @@ export const ItemListContainer = () => {
         cambioData();
     },[])
 
-    return <div className="ItemListContainer">
-        {products.length === 0 ? (<Spinner animation="border"/>) : (  
-            <ItemList products={products}/>   
-        )} 
-    </div>
+    return (
+        <div className="ItemListContainer">
+            {products.length === 0 ? (<Spinner animation="border"/>) : (  
+                <ItemList products={products}/>   
+            )} 
+        </div>
+    )
 }
