@@ -3,9 +3,7 @@ import './ItemDetailContainer.css';
 import { ItemDetail } from "./ItemDetail/ItemDetail";
 import { Spinner } from "react-bootstrap";
 
-
 const promiseContainer = () => {
-
 
     return new Promise ((resolve, reject) => {
         setTimeout(() => resolve(
@@ -71,29 +69,24 @@ const promiseContainer = () => {
     })
 }
 
-
 export const ItemDetailContainer = () => {
 
-
-    const [product, setProduct] = useState({}); 
-
+    const [producto, setProducto] = useState({}); 
 
     const cambioData = () => {
         promiseContainer().then(data => {
             const dataNew = data.filter(element => element.mostrar)
-            setProduct(dataNew)
+            setProducto(dataNew)
         })
     }
-
 
     useEffect(() => {
         cambioData();
     },[])
 
-
     return <div className="ItemDetailContainer">
-        {product.length === 0 ? (<Spinner animation="border"/>) : (  
-            <ItemDetail product={product}/>   
+        {producto.length === 0 ? (<Spinner animation="border"/>) : (  
+            <ItemDetail producto={producto}/>   
         )} 
     </div>
 }
