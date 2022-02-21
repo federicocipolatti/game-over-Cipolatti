@@ -7,6 +7,7 @@ import { getProducts } from "../../asyncmock";
 export const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]); 
+    const [loading, setLoading] = useState(true);
 
     const cambioData = () => {
         getProducts().then(data => {
@@ -16,14 +17,25 @@ export const ItemListContainer = () => {
     }
 
     useEffect(() => {
-        cambioData();
+        getProducts
+            .then((res) => {
+                setProducts(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     },[])
 
     return (
         <div className="ItemListContainer">
-            {products.length === 0 ? (<Spinner animation="border"/>) : (  
-                <ItemList products={products}/>   
-            )} 
+            {loading ? (
+                <Spinner animation="border"/>
+            ) : (
+                <ItemList products={products}/>
+            )}
         </div>
     )
 }
