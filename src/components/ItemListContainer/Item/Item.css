@@ -8,7 +8,7 @@
 
 .card-item{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: auto;
     padding: 10px;
 }
