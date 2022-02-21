@@ -5,7 +5,8 @@ const products = [
         subtitulo: 'Hola soy el producto 1',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1000,00'
+        precio: '$1000,00',
+        category: 'consola'
     },
             
     {
@@ -14,7 +15,8 @@ const products = [
         subtitulo: 'Hola soy el producto 2',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1200,00'
+        precio: '$1200,00',
+        category: 'consola'
     },
             
     {
@@ -23,7 +25,8 @@ const products = [
         subtitulo: 'Hola soy el producto 3',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1500,00'
+        precio: '$1500,00',
+        category: 'consola'
     },
 
     {
@@ -32,7 +35,8 @@ const products = [
         subtitulo: 'Hola soy el producto 4',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$2000,00'
+        precio: '$2000,00',
+        category: 'juego'
     },
 
     {
@@ -41,7 +45,8 @@ const products = [
         subtitulo: 'Hola soy el producto 5',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$2400,00'
+        precio: '$2400,00',
+        category: 'juego'
     },
 
     {
@@ -50,7 +55,8 @@ const products = [
         subtitulo: 'Hola soy el producto 6',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$3500,00'
+        precio: '$3500,00',
+        category: 'juego'
     }
 ]
 
@@ -65,7 +71,7 @@ export const getProducts = () => {
 export const getProduct = () => {
     return new Promise((resolve) =>{
         setTimeout(() =>{
-            resolve(products[0])
+            resolve(products)
         }, 2000)
     })
 }
