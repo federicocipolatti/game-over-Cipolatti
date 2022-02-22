@@ -68,10 +68,11 @@ export const getProducts = () => {
     })
 }
 
-export const getProduct = () => {
+export const getProduct = (id) => {
     return new Promise((resolve) =>{
-        setTimeout(() =>{
-            resolve(products)
+        const item = products.find((product) => product.id === id)
+        setTimeout(() => {
+            resolve(item)
         }, 2000)
     })
 }
