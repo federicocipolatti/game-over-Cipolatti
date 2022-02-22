@@ -3,14 +3,14 @@ import './NavBar.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { ButtonNav } from './ButtonNav/ButtonNav';
 import { CartWidget } from './CartWidget/CartWidget';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const NavBar = () => {
 
     return (
         <Navbar bg="light" variant="light">
             <Container className="NavBar">
-                <NavLink to={`/`}>
+                <NavLink to={'/'}>
                     <Navbar.Brand 
                         className='iconNav'>
                             <img src="img/game-over.png" 
