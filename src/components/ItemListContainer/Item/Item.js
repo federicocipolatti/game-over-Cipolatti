@@ -13,7 +13,10 @@ export const Item = ({item}) => {
                     <Card.Title className='card-title-item'>{item.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt-item'>{item.subtitulo}</Card.Subtitle>
                     <Card.Text className='card-text-item'>
-                        {item.precio}
+                        Precio: {item.precio}
+                    </Card.Text>
+                    <Card.Text className='card-text-item'>
+                        Categoría: {item.category}
                     </Card.Text>
                 <Link to={`/detail/${item.id}`}><Button variant="outline-dark">DETALLES</Button></Link>
                 </Card.Body>
