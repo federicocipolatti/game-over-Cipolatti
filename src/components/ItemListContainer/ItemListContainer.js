@@ -3,23 +3,18 @@ import './ItemListContainer.css';
 import { ItemList } from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { getProducts } from "../../asyncmock";
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]); 
     const [loading, setLoading] = useState(true);
-
-    const cambioData = () => {
-        getProducts().then(data => {
-            const dataNew = data.filter(element => element.mostrar)
-            setProducts(dataNew)
-        })
-    }
+    const {categoryId} = useParams();
 
     useEffect(() => {
-        getProducts
-            .then((res) => {
-                setProducts(res);
+        getProducts(categoryId)
+            .then((item) => {
+                setProducts(item);
             })
             .catch((error) => {
                 console.log(error);
@@ -27,7 +22,7 @@ export const ItemListContainer = () => {
             .finally(() => {
                 setLoading(false);
             })
-    },[])
+    },[categoryId])
 
     return (
         <div className="ItemListContainer">
