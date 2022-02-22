@@ -3,3 +3,13 @@
     flex-direction: row;
     width: 100%;
 }
+
+.botones{
+    display: flex;
+    justify-content: left; 
+    margin-left: 20px;
+}
+
+.btnNav{
+    margin-left: 15px;
+}

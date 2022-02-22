@@ -18,12 +18,12 @@ export const NavBar = () => {
                             style={{width: '100px'}}/>
                     </Navbar.Brand>
                 </NavLink>
-                    <Nav className="me-auto">
-                        <NavLink to={'/category/consolas'}>
-                            <Nav.Link><ButtonNav title="Consolas"/></Nav.Link>
+                    <Nav className="me-auto botones">
+                        <NavLink className="btnNav" to={'/category/consolas'}>
+                            <ButtonNav title="Consolas"/>
                         </NavLink>
-                        <NavLink to={'/category/juegos'}>
-                                <Nav.Link><ButtonNav title="Juegos"/></Nav.Link>
+                        <NavLink className="btnNav" to={'/category/juegos'}>
+                            <ButtonNav title="Juegos"/>
                         </NavLink>
                     </Nav>
                 <CartWidget/>
