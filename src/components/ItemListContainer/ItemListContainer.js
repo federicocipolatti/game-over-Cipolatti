@@ -13,8 +13,8 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         getProducts(categoryId)
-            .then((item) => {
-                setProducts(item);
+            .then((products) => {
+                setProducts(products);
             })
             .catch((error) => {
                 console.log(error);
