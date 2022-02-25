@@ -1,6 +1,6 @@
-import React { useState } from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
 
 const InputCount = ({onConfirm, stock, initial=0}) => {
@@ -13,9 +13,9 @@ const InputCount = ({onConfirm, stock, initial=0}) => {
     }
 
     return (
-        <div>
+        <div className='inputCount'>
             <input type='number' onChange={handleChange} value={count}/>
-            <button onClick={() => onConfirm(count)}>Agregar al carrito</button>
+            <Button className='btnCart' variant="outline-dark"  onClick={() => onConfirm(count)}>AGREGAR AL CARRITO</Button>
         </div>
     )
 }
@@ -38,14 +38,19 @@ const ButtonCount = ({ onConfirm, stock, initial = 0 }) => {
     return (
         <div>
             <p>{count}</p>
-            <button onClick={decrement}>-</button>
-            <button onClick={increment}>+</button>
-            <button onClick={() => onConfirm(count)}>Agregar al carrito</button>
+            <div>
+                <Button className='btnCart' variant="outline-dark" onClick={decrement}>-</Button>
+                <Button className='btnCart' variant="outline-dark" onClick={increment}>+</Button>
+            </div> 
+            <Button className='btnCart' variant="outline-dark" onClick={() => onConfirm(count)}>AGREGAR AL CARRITO</Button>
         </div>
     )
 }
 
-export const ItemDetail = ({ product }) => {
+export const ItemDetail = ({ product, inputType="button" }) => {
+
+    const [option, setOption] = useState()
+    const options = [{ value: 1, text: 'Azul'}, { value:2, text:'Rojo'}]
 
     const optionSelected = (value) => {
         console.log(value)
@@ -65,12 +70,11 @@ export const ItemDetail = ({ product }) => {
                 <Card.Body className='card-body'>
                     <Card.Title className='card-title'>{product.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt'>{product.subtitulo}</Card.Subtitle>
-                    <Select options={options} onSelect={optionSelected} defaultOption={1}/>
+                    <div options={options} onSelect={optionSelected} defaultOption={1}/>
                     <Card.Text className='card-text'>
                         {product.precio}
-                    </Card.Text>
-                <Count onConfirm={onConfirm} stock={stock} inicial={1}/>
-                <h3>El valor del select es {option}</h3>
+                    </Card.Text>         
+                <Count onConfirm={onConfirm} stock={product.stock} inicial={1}/>
                 </Card.Body>
             </Card>  
         </div>
