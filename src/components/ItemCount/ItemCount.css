@@ -5,3 +5,9 @@
 .btnCart{
     margin: 10px;
 }
+
+.botonesAdd{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
