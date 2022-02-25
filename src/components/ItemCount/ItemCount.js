@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ItemCount.css';
 import { Card, Button } from 'react-bootstrap';
 
-export const ItemCount = ({stock = '10', initial = '1', onAdd}) => {
+export const ItemCount = ({product, initial = '1', onAdd}) => {
 
   const [num, setNum] = useState(initial);
 
@@ -16,16 +16,14 @@ export const ItemCount = ({stock = '10', initial = '1', onAdd}) => {
 
   return (
     <Card style={{ width: '18rem' }} className='itemCount'>
-        {/* <Card.Img variant="top" src="img/game.ico"/> */}
         <Card.Body>
-            {/* <Card.Title>detail.title</Card.Title> */}
-            <Card.Subtitle>Stock disponible {stock}</Card.Subtitle>
+            <Card.Subtitle>Stock disponible {product.stock}</Card.Subtitle>
             <Card.Text>
                 {num}
             </Card.Text>
             <div>
                 <Button className='btnCart' variant="outline-dark" onClick={handleDecrement} disabled={num<=initial}>-</Button>
-                <Button className='btnCart' variant="outline-dark" onClick={handleIncrement} disabled={num>=stock}>+</Button>
+                <Button className='btnCart' variant="outline-dark" onClick={handleIncrement} disabled={num>=product.stock}>+</Button>
             </div>
             <Button variant="outline-dark" onClick={()=>onAdd(num)}>AÑADIR AL CARRITO</Button>
         </Card.Body>

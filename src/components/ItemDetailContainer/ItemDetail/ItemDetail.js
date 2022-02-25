@@ -19,7 +19,7 @@ export const ItemDetail = ({ product }) => {
                     <Card.Text className='card-text'>
                         {product.precio}
                     </Card.Text>
-                <ItemCount stock={15} initial={1} onAdd={handleOnAdd}/>
+                <ItemCount product={product} initial={1} onAdd={handleOnAdd}/>
                 </Card.Body>
             </Card>  
         </div>

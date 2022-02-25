@@ -6,7 +6,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$1000,00',
-        category: 'consolas'
+        category: 'consolas',
+        stock: '10'
     },
             
     {
@@ -16,7 +17,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$1200,00',
-        category: 'consolas'
+        category: 'consolas',
+        stock: '12'
     },
             
     {
@@ -26,7 +28,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$1500,00',
-        category: 'consolas'
+        category: 'consolas',
+        stock: '15'
     },
 
     {
@@ -36,7 +39,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$2000,00',
-        category: 'juegos'
+        category: 'juegos',
+        stock: '17'
     },
 
     {
@@ -46,7 +50,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$2400,00',
-        category: 'juegos'
+        category: 'juegos',
+        stock: '20'
     },
 
     {
@@ -56,7 +61,8 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '$3500,00',
-        category: 'juegos'
+        category: 'juegos',
+        stock: '8'
     }
 ]
 
