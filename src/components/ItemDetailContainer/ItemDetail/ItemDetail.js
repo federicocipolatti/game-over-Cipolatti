@@ -70,7 +70,7 @@ export const ItemDetail = ({ product, inputType="button" }) => {
                 <Card.Body className='card-body'>
                     <Card.Title className='card-title'>{product.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt'>{product.subtitulo}</Card.Subtitle>
-                    <div options={options} onSelect={optionSelected} defaultOption={1}/>
+                    <Select options={options} onSelect={optionSelected} defaultOption={1}/>
                     <Card.Text className='card-text'>
                         {product.precio}
                     </Card.Text>         
