@@ -9,7 +9,7 @@ export const Item = ({item}) => {
         <div className='Item'>
             <Card className='card-item'>
                 <Card.Img variant="top" src={item.img} alt="img-item" className='card-img-item'/>
-                <Card.Body className='card-body-item'>
+                <Card.Body>
                     <Card.Title className='card-title-item'>{item.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt-item'>{item.subtitulo}</Card.Subtitle>
                     <Card.Text className='card-text-item'>
@@ -18,9 +18,9 @@ export const Item = ({item}) => {
                     <Card.Text className='card-text-item'>
                         Categoría: {item.category}
                     </Card.Text>
-                <Link to={`/detail/${item.id}`}><Button variant="outline-dark">DETALLES</Button></Link>
+                    <Link to={`/detail/${item.id}`}><Button variant="outline-dark">DETALLES</Button></Link>
                 </Card.Body>
-            </Card>  
+            </Card>
         </div>
     )
 }
