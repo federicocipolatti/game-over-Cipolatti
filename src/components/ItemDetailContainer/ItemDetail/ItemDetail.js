@@ -12,10 +12,6 @@ export const ItemDetail = ({ product }) => {
         setQty(cantidad);
     }
 
-    const handleOnAdd = (num) => {
-        console.log(`Se agregaron ${num} productos`);
-    }
-
     return (
         <div className='ItemDetail'>
             <Card className='card'>
