@@ -9,7 +9,6 @@ export const ItemDetailContainer = () => {
 
     const [product, setProduct] = useState({}); 
     const [loading, setLoading] = useState(true); 
-    const [counter, setCounter] = useState('button')
     const {productId} = useParams(); 
 
     useEffect(() => {
@@ -24,14 +23,6 @@ export const ItemDetailContainer = () => {
                 setLoading(false);
             })
     },[productId])
-
-    const handleCount = () => {
-        if(counter === 'button'){
-            setCounter('input')
-        } else {
-            setCounter('button')
-        }
-    }
    
     return (
         <div className="ItemListContainer">
@@ -40,8 +31,7 @@ export const ItemDetailContainer = () => {
                 <Spinner animation="border"/>
             ) : (
                 <div>
-                    <ItemDetail product={product} inputType={counter}/>  
-                    <Button className='btnCart' variant="outline-dark" onClick={handleCount}>AGREGAR CANTIDAD</Button>
+                    <ItemDetail product={product}/>  
                 </div> 
             )}
         </div>

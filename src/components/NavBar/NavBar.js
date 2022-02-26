@@ -1,9 +1,9 @@
 import React from 'react';
 import './NavBar.css';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { ButtonNav } from './ButtonNav/ButtonNav';
 import { CartWidget } from './CartWidget/CartWidget';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 export const NavBar = () => {
 
@@ -26,7 +26,9 @@ export const NavBar = () => {
                             <ButtonNav title="Juegos"/>
                         </NavLink>
                     </Nav>
-                <CartWidget/>
+                    <Link to="/cart">  
+                        <Button variant="outline-dark"><CartWidget/></Button>
+                    </Link> 
             </Container>
         </Navbar>
     );

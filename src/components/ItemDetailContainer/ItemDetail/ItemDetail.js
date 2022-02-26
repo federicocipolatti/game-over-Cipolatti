@@ -2,65 +2,18 @@ import React, { useState } from 'react';
 import './ItemDetail.css';
 import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
 
-const InputCount = ({onConfirm, stock, initial=0}) => {
-    const [count, setCount] = useState(initial)
+export const ItemDetail = ({ product }) => {
 
-    const handleChange = ({target}) => {
-        if(target.value <= stock && target.value >= 0) {
-            setCount(target.value)
-        }
+    const [qty, setQty] = useState(0);
+
+    const onAdd = (cantidad) => {
+        setQty(cantidad);
     }
 
-    return (
-        <div className='inputCount'>
-            <input type='number' onChange={handleChange} value={count}/>
-            <Button className='btnCart' variant="outline-dark"  onClick={() => onConfirm(count)}>AGREGAR AL CARRITO</Button>
-        </div>
-    )
-}
-
-const ButtonCount = ({ onConfirm, stock, initial = 0 }) => {
-    const [count, setCount] = useState(initial)
-
-    const increment = () => {
-        if(count < stock) {
-            setCount(count + 1)
-        }
-    }
-
-    const decrement = () => {
-        if(count > initial) {
-            setCount(count - 1)
-        }
-    }
-
-    return (
-        <div>
-            <p>{count}</p>
-            <div>
-                <Button className='btnCart' variant="outline-dark" onClick={decrement}>-</Button>
-                <Button className='btnCart' variant="outline-dark" onClick={increment}>+</Button>
-            </div> 
-            <Button className='btnCart' variant="outline-dark" onClick={() => onConfirm(count)}>AGREGAR AL CARRITO</Button>
-        </div>
-    )
-}
-
-export const ItemDetail = ({ product, inputType="button" }) => {
-
-    const [option, setOption] = useState()
-    const options = [{ value: 1, text: 'Azul'}, { value:2, text:'Rojo'}]
-
-    const optionSelected = (value) => {
-        console.log(value)
-        setOption(value)
-    }
-
-    const Count = inputType === "button" ? ButtonCount : InputCount
-
-    const onConfirm = () => {
-        console.log('agregue al carrito')
+    const handleOnAdd = (num) => {
+        console.log(`Se agregaron ${num} productos`);
     }
 
     return (
@@ -70,11 +23,24 @@ export const ItemDetail = ({ product, inputType="button" }) => {
                 <Card.Body className='card-body'>
                     <Card.Title className='card-title'>{product.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt'>{product.subtitulo}</Card.Subtitle>
-                    <Select options={options} onSelect={optionSelected} defaultOption={1}/>
                     <Card.Text className='card-text'>
-                        {product.precio}
-                    </Card.Text>         
-                <Count onConfirm={onConfirm} stock={product.stock} inicial={1}/>
+                        Precio: {product.precio}
+                    </Card.Text>   
+                    <Card.Text className='card-text'>
+                        Categoría: {product.category}
+                    </Card.Text> 
+                    {qty === 0 ? (
+                        <ItemCount product={product} stock={product.stock} onAdd={onAdd}/>
+                    ) : (
+                        <>
+                            <Link to="/cart">  
+                                <Button variant="outline-dark" style={{margin:'5px'}}>IR AL CARRITO</Button>
+                            </Link>
+                        </>
+                    )}  
+                    <Link to="/">  
+                        <Button variant="outline-dark" style={{margin:'5px'}}>VOLVER AL INICIO</Button>
+                    </Link>   
                 </Card.Body>
             </Card>  
         </div>
