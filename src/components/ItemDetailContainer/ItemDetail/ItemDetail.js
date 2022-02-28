@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './ItemDetail.css';
 import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
+import { MyContext } from '../../../App';
 
 export const ItemDetail = ({ product }) => {
 
     const [qty, setQty] = useState(0);
 
-    const onAdd = (cantidad) => {
-        setQty(cantidad);
+    const { cart, setCart } = useContext(MyContext);
+
+    function onAdd(qty) {
+        setQty(qty);
+        setCart(`Agregué ${qty} productos`);
     }
+
+    console.log(cart);
 
     return (
         <div className='ItemDetail'>

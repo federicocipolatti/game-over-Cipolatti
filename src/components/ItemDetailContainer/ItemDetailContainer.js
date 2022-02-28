@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './ItemDetailContainer.css';
 import { ItemDetail } from "./ItemDetail/ItemDetail";
-import { Spinner, Button } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { getProduct } from "../../asyncmock";
 import { useParams } from "react-router-dom";
 
