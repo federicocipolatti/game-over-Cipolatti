@@ -13,7 +13,7 @@ export const CartContextProvider = ({ children }) => {
 
     const addToCart = (product, qty) => {
         isInCart(product.id)
-            ? sumarCantidad(product, qty)
+            ? addQty(product, qty)
             : setCart([...cart, { ...product, qty }]);
     };
 
@@ -21,7 +21,7 @@ export const CartContextProvider = ({ children }) => {
         return cart.some((product) => product.id === id);
     };
 
-    const sumarCantidad = (products, qty) => {
+    const addQty = (products, qty) => {
         const newCart = cart.map((prod) => {
             if (prod.id === products.id) {
                 const newProduct = {
