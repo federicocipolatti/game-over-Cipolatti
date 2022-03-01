@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './NavBar.css';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { ButtonNav } from './ButtonNav/ButtonNav';
 import { CartWidget } from './CartWidget/CartWidget';
 import { NavLink, Link } from 'react-router-dom';
-import { CartContext } from '../CartContext/CartContext';
 
 export const NavBar = () => {
-
-    const [cart, setCart] = useState('No hay productos');
-    console.log(cart);
 
     return (
         <Navbar bg="light" variant="light">

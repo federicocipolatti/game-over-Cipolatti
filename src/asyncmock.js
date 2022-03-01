@@ -5,7 +5,7 @@ const products = [
         subtitulo: 'Hola soy el producto 1',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1000,00',
+        precio: '1000',
         category: 'consolas',
         stock: '10'
     },
@@ -16,7 +16,7 @@ const products = [
         subtitulo: 'Hola soy el producto 2',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1200,00',
+        precio: '1200',
         category: 'consolas',
         stock: '12'
     },
@@ -27,7 +27,7 @@ const products = [
         subtitulo: 'Hola soy el producto 3',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$1500,00',
+        precio: '1500',
         category: 'consolas',
         stock: '15'
     },
@@ -38,7 +38,7 @@ const products = [
         subtitulo: 'Hola soy el producto 4',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$2000,00',
+        precio: '2000',
         category: 'juegos',
         stock: '17'
     },
@@ -49,7 +49,7 @@ const products = [
         subtitulo: 'Hola soy el producto 5',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$2400,00',
+        precio: '2400',
         category: 'juegos',
         stock: '20'
     },
@@ -60,7 +60,7 @@ const products = [
         subtitulo: 'Hola soy el producto 6',
         img: '/img/game.ico',
         mostrar: true,
-        precio: '$3500,00',
+        precio: '3500',
         category: 'juegos',
         stock: '8'
     }

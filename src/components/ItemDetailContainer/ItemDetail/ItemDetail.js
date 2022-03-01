@@ -3,20 +3,18 @@ import './ItemDetail.css';
 import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
-import { MyContext } from '../../../App';
+import CartContext from '../../../context/CartContext/CartContext';
 
 export const ItemDetail = ({ product }) => {
 
     const [qty, setQty] = useState(0);
 
-    const { cart, setCart } = useContext(MyContext);
+    const { addToCart } = useContext(CartContext);
 
-    function onAdd(qty) {
+    const onAdd = (qty) => {
         setQty(qty);
-        setCart(`Agregué ${qty} productos`);
+        addToCart(product, qty);
     }
-
-    console.log(cart);
 
     return (
         <div className='ItemDetail'>
@@ -26,13 +24,13 @@ export const ItemDetail = ({ product }) => {
                     <Card.Title className='card-title'>{product.titulo}</Card.Title>
                     <Card.Subtitle className='card-subt'>{product.subtitulo}</Card.Subtitle>
                     <Card.Text className='card-text'>
-                        Precio: {product.precio}
+                        Precio: $ {product.precio}
                     </Card.Text>   
                     <Card.Text className='card-text'>
                         Categoría: {product.category}
                     </Card.Text> 
                     {qty === 0 ? (
-                        <ItemCount product={product} stock={product.stock} onAdd={onAdd}/>
+                        <ItemCount stock={product.stock} onAdd={onAdd}/>
                     ) : (
                         <>
                             <Link to="/cart">  
