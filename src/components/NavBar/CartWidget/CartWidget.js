@@ -10,6 +10,6 @@ export const CartWidget = () => {
 
     return<div className="cart">
          <BsCart4 size="50"/>
-        {getQuantity()}
+        <h2>{getQuantity()}</h2>
     </div>   
 }

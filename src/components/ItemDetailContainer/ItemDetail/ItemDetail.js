@@ -5,15 +5,26 @@ import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import CartContext from '../../../context/CartContext/CartContext';
 
-export const ItemDetail = ({ product }) => {
+export const ItemDetail = ({product, id, titulo, subtitulo, category, precio, stock, img }) => {
 
-    const [qty, setQty] = useState(0);
+    const [quantity, setQuantity] = useState(0)
 
-    const { addToCart } = useContext(CartContext);
+    const { addItem } = useContext(CartContext)
 
-    const onAdd = (qty) => {
-        setQty(qty);
-        addToCart(product, qty);
+    const handleOnAdd = (quantity) => {
+        setQuantity(quantity)
+
+        const productToAdd = {
+            id,
+            titulo,
+            precio,
+            img,
+            category,
+            subtitulo,
+            stock
+        }
+
+        addItem(productToAdd, quantity)
     }
 
     return (
@@ -29,8 +40,8 @@ export const ItemDetail = ({ product }) => {
                     <Card.Text className='card-text'>
                         Categoría: {product.category}
                     </Card.Text> 
-                    {qty === 0 ? (
-                        <ItemCount stock={product.stock} onAdd={onAdd}/>
+                    {quantity === 0 ? (
+                        <ItemCount stock={product.stock} onAdd={handleOnAdd}/>
                     ) : (
                         <>
                             <Link to="/cart">  
