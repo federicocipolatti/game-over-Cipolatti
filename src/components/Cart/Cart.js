@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import CartContext from '../../context/CartContext'
+import { CartContextProvider } from "../../context/CartContext/CartContext"
 
 const Cart = () => {
-    const { products, removeItem, getTotal } = useContext(CartContext)
+    const { products, removeItem, getTotal } = useContext(CartContextProvider)
 
     if(products.length === 0) {
         return <h1>No hay productos en el carrito</h1>
