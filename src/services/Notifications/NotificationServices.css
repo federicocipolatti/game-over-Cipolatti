@@ -1,0 +1,13 @@
+.notification{
+    position: 'absolute';
+    top: '50';
+    right: '50';
+    display: 'flex';
+    justify-content: 'center';
+    align-items:  'center';
+    width: 'auto';
+    height: 'auto';
+    background-color: 'green';
+    color: 'white';
+    padding: '10px 20px 10px 20px';
+}

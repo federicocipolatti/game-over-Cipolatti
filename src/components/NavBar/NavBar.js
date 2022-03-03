@@ -19,12 +19,15 @@ export const NavBar = () => {
                     </Navbar.Brand>
                 </NavLink>
                     <Nav className="me-auto botones">
+                        <NavLink className="btnNav" to={'/category/accesorios'}>
+                            <ButtonNav title="Accesorios"/>
+                        </NavLink>
                         <NavLink className="btnNav" to={'/category/consolas'}>
                             <ButtonNav title="Consolas"/>
                         </NavLink>
                         <NavLink className="btnNav" to={'/category/juegos'}>
                             <ButtonNav title="Juegos"/>
-                        </NavLink>
+                        </NavLink> 
                     </Nav>
                     <Link to="/cart">  
                         <Button variant="outline-dark"><CartWidget/></Button>

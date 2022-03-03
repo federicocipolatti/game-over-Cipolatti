@@ -4,6 +4,7 @@ import { ItemList } from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { getProducts } from "../../asyncmock";
 import { useParams } from "react-router-dom";
+import { useNotificationServices } from "../../services/Notifications/NotificationServices";
 
 export const ItemListContainer = () => {
 
@@ -11,7 +12,11 @@ export const ItemListContainer = () => {
     const [loading, setLoading] = useState(true);
     const {categoryId} = useParams();
 
+    const setNotification = useNotificationServices()
+
     useEffect(() => {
+        setNotification('success', 'Bienvenido')
+
         getProducts(categoryId)
             .then((products) => {
                 setProducts(products);
