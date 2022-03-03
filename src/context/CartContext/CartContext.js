@@ -36,8 +36,25 @@ export const CartContextProvider = ({ children }) => {
         setCart(newCart);
     };
 
+    const [quantity, setQuantity] = useState(0);
+
+    const getQuantity = (products, qty) => {
+        const newQuantity = cart.map((prod) => {
+            if (prod.qty === products.qty) {
+                const newQty = {
+                    ...prod,
+                    qty: prod.qty + qty,
+                };
+                return newQty;
+            } else {
+                return qty;
+            }
+        });
+        setQuantity(newQuantity);
+    }
+
     return(
-        <Context.Provider value={{ cart, addToCart }}>
+        <Context.Provider value={{ cart, addToCart, getQuantity }}>
             {children}
         </Context.Provider>
     )

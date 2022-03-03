@@ -6,10 +6,10 @@ import CartContext from '../../../context/CartContext/CartContext';
 
 export const CartWidget = () => {
 
-    const { getQty } = useContext(CartContext)
+    const { getQuantity } = useContext(CartContext)
 
     return<div className="cart">
          <BsCart4 size="50"/>
-        
+        {getQuantity()}
     </div>   
 }
