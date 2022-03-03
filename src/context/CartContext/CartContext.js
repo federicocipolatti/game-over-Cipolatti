@@ -36,6 +36,10 @@ export const CartContextProvider = ({ children }) => {
         setCart(newCart);
     };
 
+    const getQty = () => {
+        
+    }
+
 
     return(
         <Context.Provider value={{ cart, addToCart }}>
