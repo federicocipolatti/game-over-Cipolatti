@@ -27,7 +27,7 @@ export const ItemListContainer = () => {
             .finally(() => {
                 setLoading(false);
             })
-    },[categoryId])
+    },[categoryId]) // eslint-disable-line
 
     return (
         <div className="ItemListContainer">
