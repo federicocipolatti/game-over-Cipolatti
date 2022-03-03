@@ -7,8 +7,6 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext/CartContext';
 
-
-
 const App = () => {
 
   return (
