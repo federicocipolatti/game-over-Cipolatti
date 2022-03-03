@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import './NotificationServices.css';
 
-const Notification = ({ message = 'Prueba!', severity }) => {
+const Notification = ({ message, severity }) => {
 
     const NotificationStyles = {
         position: 'absolute',
@@ -12,7 +12,7 @@ const Notification = ({ message = 'Prueba!', severity }) => {
         alignItems:  'center',
         width: 'auto',
         height: 'auto',
-        backgroundColor: 'green',
+        backgroundColor: severity === 'success' ? 'green' : 'red',
         color: 'white',
         padding: '10px 20px 10px 20px'
     }

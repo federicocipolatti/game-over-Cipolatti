@@ -17,7 +17,7 @@ export const ItemDetail = ({ product }) => {
     const onAdd = (qty) => {
         setQty(qty);
         addToCart(product, qty);
-        setNotification( 'success', `Se añadió ${product.titulo} al carrito`)
+        setNotification('success', `Se añadió ${product.titulo} al carrito`)
     }
 
     return (
