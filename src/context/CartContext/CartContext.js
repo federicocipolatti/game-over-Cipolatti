@@ -6,15 +6,14 @@ const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])  
-    console.log(products)
 
-    const addItem = (item, quantity) => {
+    const addItem = (product, quantity) => {
         const productToAdd = {
-            ...item,
+            ...product,
             quantity
         } 
 
-        isInCart(item.id) ? updateItemInCart(productToAdd) : addItemToCart(productToAdd) 
+        isInCart(product.id) ? updateItemInCart(productToAdd) : addItemToCart(productToAdd) 
     }
 
     const isInCart = (id) => {
