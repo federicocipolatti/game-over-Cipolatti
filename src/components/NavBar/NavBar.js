@@ -4,8 +4,12 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { ButtonNav } from './ButtonNav/ButtonNav';
 import { CartWidget } from './CartWidget/CartWidget';
 import { NavLink, Link } from 'react-router-dom';
+import CartContext from '../../context/CartContext/CartContext';
+import { useContext } from 'react';
 
 export const NavBar = () => {
+
+    const { getQuantity } = useContext(CartContext)
 
     return (
         <Navbar bg="light" variant="light">
@@ -19,6 +23,9 @@ export const NavBar = () => {
                     </Navbar.Brand>
                 </NavLink>
                     <Nav className="me-auto botones">
+                        <NavLink className="btnNav" to={'/category/accesorios'}>
+                            <ButtonNav title="Accesorios"/>
+                        </NavLink>
                         <NavLink className="btnNav" to={'/category/consolas'}>
                             <ButtonNav title="Consolas"/>
                         </NavLink>
@@ -27,7 +34,7 @@ export const NavBar = () => {
                         </NavLink>
                     </Nav>
                     <Link to="/cart">  
-                        <Button variant="outline-dark"><CartWidget/></Button>
+                        <Button variant="outline-dark" disabled={getQuantity()<=0}><CartWidget/></Button>
                     </Link> 
             </Container>
         </Navbar>

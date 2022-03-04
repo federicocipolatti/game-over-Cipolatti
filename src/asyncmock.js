@@ -6,7 +6,7 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '1000',
-        category: 'consolas',
+        category: 'accesorios',
         stock: '10'
     },
             
@@ -17,7 +17,7 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '1200',
-        category: 'consolas',
+        category: 'accesorios',
         stock: '12'
     },
             
@@ -39,7 +39,7 @@ const products = [
         img: '/img/game.ico',
         mostrar: true,
         precio: '2000',
-        category: 'juegos',
+        category: 'consolas',
         stock: '17'
     },
 
