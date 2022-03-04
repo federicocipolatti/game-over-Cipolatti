@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import CartContext from "../../context/CartContext/CartContext"
+import { Button } from 'react-bootstrap';
 
 const Cart = () => {
     const { products, removeItem, getTotal } = useContext(CartContext)
@@ -20,7 +21,7 @@ const Cart = () => {
                         <div key={prod.id}>
                             <h3>{prod.titulo}</h3>
                             <h3>Cantidad {prod.quantity}</h3>
-                            <button onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</button>
+                            <Button className='btnCart' variant="outline-dark"onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</Button>
                         </div>
                     )
                 })
