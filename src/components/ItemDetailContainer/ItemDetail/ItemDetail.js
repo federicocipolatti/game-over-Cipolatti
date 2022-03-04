@@ -3,13 +3,13 @@ import './ItemDetail.css';
 import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
-import { CartContextProvider } from '../../../context/CartContext/CartContext';
+import CartContext from '../../../context/CartContext/CartContext';
 
 export const ItemDetail = ({product, id, titulo, subtitulo, category, precio, stock, img }) => {
 
     const [quantity, setQuantity] = useState(0)
 
-    const { addItem } = useContext(CartContextProvider)
+    const { addItem } = useContext(CartContext)
 
     const handleOnAdd = (quantity) => {
         setQuantity(quantity)

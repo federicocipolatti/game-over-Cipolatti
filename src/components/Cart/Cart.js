@@ -1,14 +1,14 @@
 import { useContext } from "react"
-import { CartContextProvider } from "../../context/CartContext/CartContext"
+import CartContext from "../../context/CartContext/CartContext"
 
 const Cart = () => {
-    const { products, removeItem, getTotal } = useContext(CartContextProvider)
+    const { products, removeItem, getTotal } = useContext(CartContext)
 
     if(products.length === 0) {
         return <h1>No hay productos en el carrito</h1>
     }
 
-    const handleRemoveItem = (id, titulo) => {
+    const handleRemoveItem = (id) => {
         removeItem(id)
     }
 
@@ -23,7 +23,8 @@ const Cart = () => {
                             <button onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</button>
                         </div>
                     )
-            })}
+                })
+            }
             <h1>Total: ${getTotal()}</h1>
         </>
     
