@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 const Cart = () => {
     const { products, removeItem, getTotal } = useContext(CartContext)
+    console.log(products)
 
     if(products.length === 0) {
         return <h1>No hay productos en el carrito</h1>
@@ -17,6 +18,7 @@ const Cart = () => {
             <h1>Cart</h1>
             {
                 products.map(prod => {
+                    console.log(prod)
                     return (
                         <div key={prod.id}>
                             <h3>{prod.titulo}</h3>

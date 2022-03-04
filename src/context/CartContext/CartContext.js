@@ -1,19 +1,19 @@
 import { createContext, useState } from 'react';
-import './CartContext.css';
 
 const CartContext = createContext();
 
 export const CartContextProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])  
+    console.log(products)
 
-    const addItem = (product, quantity) => {
+    const addItem = (item, quantity) => {
         const productToAdd = {
-            ...product,
+            ...item,
             quantity
         } 
 
-        isInCart(product.id) ? updateItemInCart(productToAdd) : addItemToCart(productToAdd) 
+        isInCart(item.id) ? updateItemInCart(productToAdd) : addItemToCart(productToAdd) 
     }
 
     const isInCart = (id) => {
