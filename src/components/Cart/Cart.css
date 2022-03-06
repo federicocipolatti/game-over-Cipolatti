@@ -1,15 +1,25 @@
+.carrito{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-cart{
     display: flex;
     flex-direction: row;
     width: 800px;
     padding: 15px;
+    background-color: #e5e5e5;
+    border: none;
 }
 
 .card-img-cart{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 350px;
 }
 
 .card-body-cart{

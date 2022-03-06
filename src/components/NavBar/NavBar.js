@@ -12,7 +12,7 @@ export const NavBar = () => {
     const { getQuantity } = useContext(CartContext)
 
     return (
-        <Navbar bg="light" variant="light">
+        <Navbar style={{backgroundColor:'#e5e5e5'}}>
             <Container className="NavBar">
                 <NavLink to={'/'}>
                     <Navbar.Brand 

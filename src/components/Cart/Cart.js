@@ -5,7 +5,6 @@ import './Cart.css';
 
 const Cart = () => {
     const { products, removeItem, getTotal } = useContext(CartContext)
-    console.log(products)
 
     if(products.length === 0) {
         return <h1>No hay productos en el carrito</h1>
@@ -15,12 +14,13 @@ const Cart = () => {
         removeItem(id)
     }
 
-    return <>
-            <h1>Tu carrito</h1>
+    return <div>
+            <h1>Tu carrito</h1>  
+            <div className="carrito">     
             {
                 products.map(prod => {
-    
                     return (
+                        
                         <Card className='card-cart' key={prod.id} style={{margin:'15px'}}>
                             <Card.Img variant="top" src={prod.img} alt="img-item" className='card-img-cart'/>
                             <Card.Body className='card-body-cart'>
@@ -37,12 +37,13 @@ const Cart = () => {
                                 </Card.Text>   
                                 <Button className='btnCart' variant="outline-dark"onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</Button>
                             </Card.Body>
-                        </Card>  
+                        </Card>     
                     )            
                 })
             }
+            </div> 
             <h1>Total a pagar: ${getTotal()}</h1>
-        </>  
+        </div>  
 }
 
 export default Cart
