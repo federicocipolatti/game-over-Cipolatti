@@ -5,7 +5,7 @@ import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import CartContext from '../../../context/CartContext/CartContext';
 
-export const ItemDetail = ({product, id, titulo, subtitulo, category, precio, stock, img }) => {
+export const ItemDetail = ({ product }) => {
 
     const [quantity, setQuantity] = useState(0)
 
@@ -15,13 +15,7 @@ export const ItemDetail = ({product, id, titulo, subtitulo, category, precio, st
         setQuantity(quantity)
 
         const productToAdd = {
-            id,
-            titulo,
-            precio,
-            img,
-            category,
-            subtitulo,
-            stock
+            ...product
         }
 
         addItem(productToAdd, quantity)

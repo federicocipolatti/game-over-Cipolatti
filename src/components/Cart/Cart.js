@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import CartContext from "../../context/CartContext/CartContext"
-import { Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import './Cart.css';
 
 const Cart = () => {
     const { products, removeItem, getTotal } = useContext(CartContext)
@@ -15,22 +16,33 @@ const Cart = () => {
     }
 
     return <>
-            <h1>Cart</h1>
+            <h1>Tu carrito</h1>
             {
                 products.map(prod => {
-                    console.log(prod)
+    
                     return (
-                        <div key={prod.id}>
-                            <h3>{prod.titulo}</h3>
-                            <h3>Cantidad {prod.quantity}</h3>
-                            <Button className='btnCart' variant="outline-dark"onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</Button>
-                        </div>
-                    )
+                        <Card className='card-cart' key={prod.id} style={{margin:'15px'}}>
+                            <Card.Img variant="top" src={prod.img} alt="img-item" className='card-img-cart'/>
+                            <Card.Body className='card-body-cart'>
+                                <Card.Title className='card-title-cart'>{prod.titulo}</Card.Title>
+                                <Card.Subtitle className='card-subt-cart'>{prod.subtitulo}</Card.Subtitle>
+                                <Card.Text className='card-text-cart'>
+                                     Precio unidad: $ {prod.precio}
+                                </Card.Text>   
+                                <Card.Text className='card-text-cart'>
+                                    Categoría: {prod.category}
+                                </Card.Text>   
+                                <Card.Text className='card-text-cart'>
+                                    Cantidad {prod.quantity}
+                                </Card.Text>   
+                                <Button className='btnCart' variant="outline-dark"onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</Button>
+                            </Card.Body>
+                        </Card>  
+                    )            
                 })
             }
-            <h1>Total: ${getTotal()}</h1>
-        </>
-    
+            <h1>Total a pagar: ${getTotal()}</h1>
+        </>  
 }
 
 export default Cart

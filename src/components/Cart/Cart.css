@@ -1,0 +1,35 @@
+.card-cart{
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    padding: 15px;
+}
+
+.card-img-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.card-body-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-title-cart{
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.card-subt-cart{
+    font-size: 1.5em;
+    margin-bottom: 25px;
+}
+
+.card-text-cart{
+    font-size: 1.2em;
+    margin-bottom: 25px;
+}
