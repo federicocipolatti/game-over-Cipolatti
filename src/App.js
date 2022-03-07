@@ -7,11 +7,13 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartContextProvider } from './context/CartContext/CartContext';
 import Cart  from './components/Cart/Cart';
+import { NotificationServicesProvider } from './services/Notifications/NotificationServices';
 
 const App = () => {
 
   return (
     <div className="App">
+      <NotificationServicesProvider>
       <CartContextProvider>
         <BrowserRouter>
           <NavBar/>
@@ -23,6 +25,7 @@ const App = () => {
             </Routes> 
         </BrowserRouter>
       </CartContextProvider>
+      </NotificationServicesProvider>
     </div>
   );
 }

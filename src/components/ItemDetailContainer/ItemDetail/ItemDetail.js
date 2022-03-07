@@ -4,12 +4,15 @@ import { Card, Button } from 'react-bootstrap';
 import { ItemCount } from '../../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import CartContext from '../../../context/CartContext/CartContext';
+import { useNotificationServices } from '../../../services/Notifications/NotificationServices';
 
 export const ItemDetail = ({ product }) => {
 
     const [quantity, setQuantity] = useState(0)
 
     const { addItem } = useContext(CartContext)
+
+    const setNotification = useNotificationServices()
 
     const handleOnAdd = (quantity) => {
         setQuantity(quantity)
@@ -19,6 +22,8 @@ export const ItemDetail = ({ product }) => {
         }
 
         addItem(productToAdd, quantity)
+        setNotification('success',`Se agrego ${product.titulo} al carrito`)
+        console.log(setNotification)
     }
 
     return (

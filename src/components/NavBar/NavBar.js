@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './NavBar.css';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { ButtonNav } from './ButtonNav/ButtonNav';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { CartWidget } from './CartWidget/CartWidget';
-import { NavLink, Link } from 'react-router-dom';
-import CartContext from '../../context/CartContext/CartContext';
-import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import { getDocs, collection } from 'firebase/firestore';
+import { firestoreDb } from '../../services/firebase/firebase';
+import { Button } from 'react-bootstrap';
 
 export const NavBar = () => {
+    const [categories, setCategories] = useState([]);
 
-    const { getQuantity } = useContext(CartContext)
+    useEffect(() => {
+        getDocs(collection(firestoreDb, 'categories'))
+            .then(res => {
+                const categories = res.docs.map(cat => {
+                    return{id: cat.id, ...cat.data()}
+                })
+                setCategories(categories)
+            })
+    },[])
 
     return (
         <Navbar style={{backgroundColor:'#e5e5e5'}}>
@@ -23,19 +32,11 @@ export const NavBar = () => {
                     </Navbar.Brand>
                 </NavLink>
                     <Nav className="me-auto botones">
-                        <NavLink className="btnNav" to={'/category/accesorios'}>
-                            <ButtonNav title="Accesorios"/>
-                        </NavLink>
-                        <NavLink className="btnNav" to={'/category/consolas'}>
-                            <ButtonNav title="Consolas"/>
-                        </NavLink>
-                        <NavLink className="btnNav" to={'/category/juegos'}>
-                            <ButtonNav title="Juegos"/>
-                        </NavLink>
+                            {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`} className="btnNav">
+                                <Button  variant="outline-dark"> {cat.description}</Button>
+                            </NavLink>)}
                     </Nav>
-                    <Link to="/cart">  
-                        <Button variant="outline-dark" disabled={getQuantity()<=0}><CartWidget/></Button>
-                    </Link> 
+                <CartWidget/>
             </Container>
         </Navbar>
     );

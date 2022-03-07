@@ -2,26 +2,34 @@ import React, { useState, useEffect } from "react";
 import './ItemListContainer.css';
 import { ItemList } from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
-import { getProducts } from "../../asyncmock";
 import { useParams } from "react-router-dom";
+import { getDocs, collection, query, where } from "firebase/firestore"; 
+import { firestoreDb } from "../../services/firebase/firebase";
 
 export const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]); 
     const [loading, setLoading] = useState(true);
-    const {categoryId} = useParams();
+    const { categoryId } = useParams();
 
     useEffect(() => {
-        getProducts(categoryId)
-            .then((products) => {
-                setProducts(products);
+        const collectionRef = categoryId ? 
+            query(collection(firestoreDb, 'products'), where('category', '==', categoryId)) :
+            collection(firestoreDb, 'products') 
+
+        getDocs(collectionRef)
+        .then(res => {
+            const products = res.docs.map(doc => {
+                return { id: doc.id, ...doc.data() }
             })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            })
+            setProducts(products);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
     },[categoryId])
 
     return (

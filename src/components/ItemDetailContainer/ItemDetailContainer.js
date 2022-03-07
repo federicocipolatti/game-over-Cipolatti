@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import './ItemDetailContainer.css';
 import { ItemDetail } from "./ItemDetail/ItemDetail";
 import { Spinner } from "react-bootstrap";
-import { getProduct } from "../../asyncmock";
 import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
+import { firestoreDb } from "../../services/firebase/firebase";
 
 export const ItemDetailContainer = () => {
 
@@ -12,9 +13,12 @@ export const ItemDetailContainer = () => {
     const {productId} = useParams(); 
 
     useEffect(() => {
-        getProduct(productId)
-            .then((res) => {
-                setProduct(res);
+        const docRef = doc(firestoreDb, 'products', productId)
+
+        getDoc(docRef)
+            .then(res => {
+                const product = {id: res.id, ...res.data()}
+                setProduct(product)
             })
             .catch((error) => {
                 console.log(error);
