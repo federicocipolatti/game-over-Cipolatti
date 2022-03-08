@@ -4,7 +4,33 @@ import { Card, Button } from 'react-bootstrap';
 import './Cart.css';
 
 const Cart = () => {
+    const [processingOrder, setProcessingOrder] = useState(false);
+    const [contact, setContact] = useState({
+        name:'',
+        phone:'',
+        address:'',
+        comment:''
+    });
+
     const { products, removeItem, getTotal } = useContext(CartContext)
+    const contactFormRef = () => {
+        setProcessingOrder(true)
+
+        const objOrder = {
+            buyer: contact,
+            item: products,
+            total: getTotal(),
+            date: new Date()
+        }
+
+        console.log(objOrder)
+
+        setProcessingOrder(false)
+    }
+
+    if(processingOrder) {
+        return <h1>Se está procesando su orden</h1>
+    }
 
     if(products.length === 0) {
         return <h1>No hay productos en el carrito</h1>
