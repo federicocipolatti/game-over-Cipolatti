@@ -1,7 +1,13 @@
-import { useContext } from "react"
+import { useContext, useState, useRef } from "react"
 import CartContext from "../../context/CartContext/CartContext"
 import { Card, Button } from 'react-bootstrap';
 import './Cart.css';
+import { addDoc, collection, doc, getDocs, writeBatch, getDoc, Timestamp } from 'firebase/firestore';
+import { firestoreDb } from "../../services/firebase/firebase";
+import { useNotificationServices } from "../../services/Notifications/NotificationServices";
+import Togglable from "../Toogleable/Toogleble";
+import ContactForm from "../ContactForm/ContactForm";
+import CartItem from "../CartItem/CartItem";
 
 const Cart = () => {
     const [processingOrder, setProcessingOrder] = useState(false);
@@ -12,21 +18,60 @@ const Cart = () => {
         comment:''
     });
 
-    const { products, removeItem, getTotal } = useContext(CartContext)
-    const contactFormRef = () => {
-        setProcessingOrder(true)
+    const { products, removeItem, getTotal, clearCart } = useContext(CartContext)
+    const contactFormRef = useRef()
 
-        const objOrder = {
-            buyer: contact,
-            item: products,
-            total: getTotal(),
-            date: new Date()
+    const setNotification = useNotificationServices()
+        
+
+    const confirmOrder = () => {
+        if(contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') {
+            setProcessingOrder(true)
+            
+            const objOrder = {
+                buyer: contact,
+                items: products,
+                total: getTotal(),
+                date: Timestamp.fromDate(new Date())
+            }
+
+            const batch = writeBatch(firestoreDb)
+            const outOfStock = []
+
+            objOrder.items.forEach(prod => {
+                getDoc(doc(firestoreDb, 'products', prod.id)).then(response => {
+                    if(response.data().stock >= prod.quantity) {
+                        batch.update(doc(firestoreDb, 'products', response.id), {
+                            stock: response.data().stock - prod.quantity
+                        })
+                    } else {
+                        outOfStock.push({ id: response.id, ...response.data()})    
+                    }
+                })
+            })
+
+            if(outOfStock.length === 0) {
+                addDoc(collection(firestoreDb, 'orders'), objOrder).then(({id}) => {
+                    batch.commit().then(() => {
+                        clearCart()
+                        setNotification('success', `La orden se genero exitosamente, su numero de orden es: ${id}`)
+                    })
+                }).catch(error => {
+                    setNotification('error', error)
+                }).finally(() => {
+                    setProcessingOrder(false)
+                })
+            } else {
+                outOfStock.forEach(prod => {
+                    setNotification('error', `El producto ${prod.name} no tiene stock disponible`)
+                    removeItem(prod.id)
+                })          
+            }
+        } else {
+            setNotification('error', 'Debe completar los datos de contacto para generar la orden')
         }
-
-        console.log(objOrder)
-
-        setProcessingOrder(false)
     }
+    
 
     if(processingOrder) {
         return <h1>Se está procesando su orden</h1>
@@ -40,36 +85,38 @@ const Cart = () => {
         removeItem(id)
     }
 
-    return <div>
-            <h1>Tu carrito</h1>  
-            <div className="carrito">     
+    return ( 
+        <div>
+            <h1>Cart</h1>
+            { products.map(p => <CartItem key={p.id} {...p}/>) }
+            <h3>Total: ${getTotal()}</h3>
+            <Button variant="outline-dark" style={{margin:'5px'}} onClick={() => clearCart()}>Cancelar compra</Button>
+            <Button variant="outline-dark" onClick={() => confirmOrder()}>Confirmar compra</Button>
             {
-                products.map(prod => {
-                    return (
-                        
-                        <Card className='card-cart' key={prod.id} style={{margin:'15px'}}>
-                            <Card.Img variant="top" src={prod.img} alt="img-item" className='card-img-cart'/>
-                            <Card.Body className='card-body-cart'>
-                                <Card.Title className='card-title-cart'>{prod.titulo}</Card.Title>
-                                <Card.Subtitle className='card-subt-cart'>{prod.subtitulo}</Card.Subtitle>
-                                <Card.Text className='card-text-cart'>
-                                     Precio unidad: $ {prod.precio}
-                                </Card.Text>   
-                                <Card.Text className='card-text-cart'>
-                                    Categoría: {prod.category}
-                                </Card.Text>   
-                                <Card.Text className='card-text-cart'>
-                                    Cantidad {prod.quantity}
-                                </Card.Text>   
-                                <Button className='btnCart' variant="outline-dark"onClick={() => handleRemoveItem(prod.id, prod.titulo)}>X</Button>
-                            </Card.Body>
-                        </Card>     
-                    )            
-                })
+                (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') &&
+                
+                    <div>
+                        <h4>Nombre: {contact.name}</h4>
+                        <h4>Telefono: {contact.phone}</h4>
+                        <h4>Direccion: {contact.address}</h4>
+                        <h4>Comentario: {contact.comment}</h4>
+                        <Button variant="outline-dark" 
+                                onClick={() => setContact({ phone: '', address: '', comment: ''})} 
+                                style={{backgroundColor: '#db4025'}}>
+                            Borrar datos de contacto
+                        </Button>
+                    </div>    
             }
-            </div> 
-            <h1>Total a pagar: ${getTotal()}</h1>
-        </div>  
+            <Togglable buttonLabelShow={
+                        (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') 
+                            ? 'Editar contacto' 
+                            : 'Agregar contacto'
+                        } 
+                        ref={contactFormRef}>
+                <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
+            </Togglable>          
+        </div>
+    )  
 }
 
 export default Cart
