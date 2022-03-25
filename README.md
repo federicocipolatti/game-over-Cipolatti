@@ -6,7 +6,7 @@ Este proyecto está creado en el ambiente de desarrollo de React.js, por lo que 
 Si no sabes hacer esto, puedes ir a este enlace para ver cómo se hace: https://es.reactjs.org/
 
 **Visuals**
-! [Alt Text] (https://github.com/federicocipolatti/game-over-Cipolatti/blob/final/public/img/videoApp.gif)
+![Alt Text] (img/videoApp.gif)
 
 **Librerias**
 
