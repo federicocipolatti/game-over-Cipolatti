@@ -9,8 +9,11 @@ import { useNotificationServices } from "../../services/Notifications/Notificati
 export const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]); 
+
     const [loading, setLoading] = useState(true);
+
     const { categoryId } = useParams();
+    
     const { setNotification } = useNotificationServices();
 
     useEffect(() => {

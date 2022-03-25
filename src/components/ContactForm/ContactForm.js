@@ -8,6 +8,12 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
     const [address, setAddress] = useState('')
     const [comment, setComment] = useState('')
 
+    const contactStyle = {
+      marginTop: '20px',
+      color: 'white',
+      fontSize: 'large'
+    }
+
     const handleContactForm = (e) => {
         e.preventDefault()
         toggleVisibility.current.toggleVisibility()
@@ -27,7 +33,7 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
 
     return (
         <div className='ContactContainer'>
-          <div style={{marginTop:'20px'}}>Contacto</div>
+          <div style={contactStyle}>Contacto</div>
           <form className='ContactForm' onSubmit={handleContactForm}>
             <label className='LabelContact'>Nombre:
               <input

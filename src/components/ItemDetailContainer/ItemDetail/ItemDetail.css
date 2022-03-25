@@ -7,13 +7,16 @@
     border: none;
     color: white;
     border-radius: 20px;
+    min-height: 300px;
 }
 
 .card-img{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: auto;
+    max-width: 50%;
+    max-height: fit-content;
 }
 
 .card-body{

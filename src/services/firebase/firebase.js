@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getDocs, collection, query, where, getDoc, doc } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAbp58YzsU127L2B7FJL8BSYcPUO7iLo8g",
-  authDomain: "game-over-ecom.firebaseapp.com",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
   projectId: "game-over-ecom",
-  storageBucket: "game-over-ecom.appspot.com",
-  messagingSenderId: "84519317342",
-  appId: "1:84519317342:web:75e127aa0bb86f36a769cf"
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);
