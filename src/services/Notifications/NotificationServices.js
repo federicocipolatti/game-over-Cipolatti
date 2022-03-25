@@ -1,55 +1,45 @@
 import React, { createContext, useContext, useState } from 'react';
+import './NotificationServices.css'
+
 
 const Notification = ({ message, severity }) => {
-
-    const notificationStyles = {
-        position: 'absolute',
-        bottom: '50',
-        right: '500',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems:  'center',
-        width: 'auto',
-        height: 'auto',
-        color: 'white',
-        padding: '10px 20px 10px 20px'
+    if (message === '') {
+        return null;
     }
-
-    const config = true ?
-    {
-        style: notificationStyles,
-        className: severity === 'success' ? 'success' : 'Error'
-    } : {}
-
     return (
-        <div {...config}>
+        <div className={severity === 'success' ? 'success' : 'error'}>
             {message}
         </div>
-    )
-}
+    );
+};
 
-const NotificationContext = createContext()
+
+const NotificationContext = createContext();
+
 
 export const NotificationServicesProvider = ({ children }) => {
-    const [message, setMesagge] = useState('')
-    const [severity, setSeverity] =useState('')
+    const [message, setMesagge] = useState('');
+    const [severity, setSeverity] = useState('');
+
 
     const setNotification = (severity, message) => {
-        setMesagge(message)
-        setSeverity(severity)
+        setMesagge(message);
+        setSeverity(severity);
         setTimeout(() => {
-            setMesagge('')
-        }, 5000)
-    }
+            setMesagge('');
+        }, 5000);
+    };
 
-    return(
-        <NotificationContext.Provider value={ setNotification }>
-            <Notification message={message} severity={severity}/>
+
+    return (
+        <NotificationContext.Provider value={{ setNotification }}>
+            <Notification message={message} severity={severity} />
             {children}
         </NotificationContext.Provider>
-    )
-}
+    );
+};
+
 
 export const useNotificationServices = () => {
-    return useContext(NotificationContext)
-}
+    return useContext(NotificationContext);
+};

@@ -21,19 +21,19 @@ export const NavBar = () => {
     },[])
 
     return (
-        <Navbar style={{backgroundColor:'#e5e5e5'}}>
+        <Navbar style={{backgroundColor:'#343a40'}}>
             <Container className="NavBar">
                 <NavLink to={'/'}>
                     <Navbar.Brand 
                         className='iconNav'>
-                            <img src="img/game-over.png" 
+                            <img src="img/go3.png" 
                             alt='iconNav' 
-                            style={{width: '100px'}}/>
+                            style={{width: '150px'}}/>
                     </Navbar.Brand>
                 </NavLink>
                     <Nav className="me-auto botones">
                             {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`} className="btnNav">
-                                <Button  variant="outline-dark"> {cat.description}</Button>
+                                <Button  variant="outline-light"> {cat.description}</Button>
                             </NavLink>)}
                     </Nav>
                 <CartWidget/>

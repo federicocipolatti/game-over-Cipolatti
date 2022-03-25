@@ -1,0 +1,30 @@
+.success {
+    background-color: green;
+    width: 300px;
+    height: auto;
+    padding: 10px 12px;
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+.error {
+    background-color: red;
+    width: 300px;
+    height: auto;
+    padding: 10px 12px;
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}

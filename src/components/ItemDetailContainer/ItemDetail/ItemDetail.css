@@ -3,8 +3,10 @@
     flex-direction: row;
     width: 1000px;
     padding: 15px;
-    background-color: #e5e5e5;
+    background-color: #343a40;
     border: none;
+    color: white;
+    border-radius: 20px;
 }
 
 .card-img{

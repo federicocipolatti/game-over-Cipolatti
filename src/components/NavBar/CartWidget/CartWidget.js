@@ -12,7 +12,7 @@ export const CartWidget = () => {
 
     return(
         <Link to="/cart">  
-            <Button variant="outline-dark" disabled={getQuantity()<=0}>
+            <Button variant="outline-light" disabled={getQuantity()<=0}>
                 <div className="cartWidget"> 
                     <BsCart4 size="50"/>
                     <h2>{getQuantity()}</h2>

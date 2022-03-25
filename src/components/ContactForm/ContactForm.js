@@ -61,7 +61,7 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setComment(target.value)}
               />
             </label>
-            <Button variant='outline-success' style={{margin:'20px'}} className='Button' type='submit'>Confirmar</Button>
+            <Button variant='success' style={{margin:'20px'}} className='Button' type='submit'>Confirmar</Button>
           </form>
         </div>
       )

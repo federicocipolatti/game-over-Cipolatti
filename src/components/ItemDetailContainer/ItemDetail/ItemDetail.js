@@ -44,12 +44,12 @@ export const ItemDetail = ({ product }) => {
                     ) : (
                         <>
                             <Link to="/cart">  
-                                <Button variant="outline-dark" style={{margin:'5px'}}>IR AL CARRITO</Button>
+                                <Button variant="outline-light" style={{margin:'5px'}}>IR AL CARRITO</Button>
                             </Link>
                         </>
                     )}  
                     <Link to="/">  
-                        <Button variant="outline-dark" style={{margin:'5px'}}>VOLVER AL INICIO</Button>
+                        <Button variant="outline-light" style={{margin:'5px'}}>VOLVER AL INICIO</Button>
                     </Link>   
                 </Card.Body>
             </Card>  

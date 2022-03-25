@@ -27,7 +27,7 @@ const CartItem = ({ id, titulo, quantity, precio, img, subtitulo, category }) =>
                 <Card.Text className='card-text-cart'>
                     Cantidad {quantity}
                 </Card.Text>   
-                <Button className='btnCart' variant="outline-dark"onClick={() => handleRemove(id, titulo)}>X</Button>
+                <Button className='btnCart' variant="outline-light"onClick={() => handleRemove(id, titulo)}>X</Button>
             </Card.Body>
         </Card>     
     )

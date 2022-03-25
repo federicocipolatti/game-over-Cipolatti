@@ -22,11 +22,11 @@ export const ItemCount = ({stock, initial = 1,  onAdd}) => {
                 {quantity}
             </Card.Text>
             <div>
-                <Button className='btnCart' variant="outline-dark" onClick={ decrement } disabled={quantity<initial}>-</Button>
-                <Button className='btnCart' variant="outline-dark" onClick={ increment } disabled={quantity>=stock}>+</Button>
+                <Button className='btnCart' variant="outline-light" onClick={ decrement } disabled={quantity<initial}>-</Button>
+                <Button className='btnCart' variant="outline-light" onClick={ increment } disabled={quantity>=stock}>+</Button>
             </div>
             <Button 
-            variant="outline-dark" 
+            variant="outline-light" 
             onClick={()=>onAdd(quantity)} 
             disabled = {quantity < initial}>
                 AÑADIR AL CARRITO

@@ -1,8 +1,8 @@
 import { useContext, useState, useRef } from "react"
 import CartContext from "../../context/CartContext/CartContext"
-import { Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Cart.css';
-import { addDoc, collection, doc, getDocs, writeBatch, getDoc, Timestamp } from 'firebase/firestore';
+import { addDoc, collection, doc, writeBatch, getDoc, Timestamp } from 'firebase/firestore';
 import { firestoreDb } from "../../services/firebase/firebase";
 import { useNotificationServices } from "../../services/Notifications/NotificationServices";
 import Togglable from "../Toogleable/Toogleble";
@@ -87,11 +87,11 @@ const Cart = () => {
 
     return ( 
         <div>
-            <h1>Cart</h1>
-            { products.map(p => <CartItem key={p.id} {...p}/>) }
+            <h1>Tu Carrito</h1>
+            { products.map(p => <CartItem style={{backgroundColor:'#343a40'}} key={p.id} {...p}/>) }
             <h3>Total: ${getTotal()}</h3>
-            <Button variant="outline-dark" style={{margin:'5px'}} onClick={() => clearCart()}>Cancelar compra</Button>
-            <Button variant="outline-dark" onClick={() => confirmOrder()}>Confirmar compra</Button>
+            <Button variant="outline-light" style={{margin:'5px'}} onClick={() => clearCart()}>Cancelar compra</Button>
+            <Button variant="outline-light" onClick={() => confirmOrder()}>Confirmar compra</Button>
             {
                 (contact.phone !== '' && contact.address !== '' && contact.comment !== '' && contact.name !== '') &&
                 
@@ -100,7 +100,7 @@ const Cart = () => {
                         <h4>Telefono: {contact.phone}</h4>
                         <h4>Direccion: {contact.address}</h4>
                         <h4>Comentario: {contact.comment}</h4>
-                        <Button variant="outline-dark" 
+                        <Button variant="danger" 
                                 onClick={() => setContact({ phone: '', address: '', comment: ''})} 
                                 style={{backgroundColor: '#db4025'}}>
                             Borrar datos de contacto
