@@ -4,8 +4,11 @@ import { Button } from 'react-bootstrap'
 
 const ContactForm = ({ toggleVisibility, setContact }) => {
     const [name, setName] = useState('')
+
     const [phone, setPhone] = useState('')
+
     const [address, setAddress] = useState('')
+    
     const [comment, setComment] = useState('')
 
     const contactStyle = {

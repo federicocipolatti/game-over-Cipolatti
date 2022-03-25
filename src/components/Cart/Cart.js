@@ -11,6 +11,7 @@ import CartItem from "../CartItem/CartItem";
 
 const Cart = () => {
     const [processingOrder, setProcessingOrder] = useState(false);
+
     const [contact, setContact] = useState({
         name:'',
         phone:'',
@@ -19,6 +20,7 @@ const Cart = () => {
     });
 
     const { products, removeItem, getTotal, clearCart } = useContext(CartContext)
+
     const contactFormRef = useRef()
 
     const { setNotification } = useNotificationServices()
@@ -36,6 +38,7 @@ const Cart = () => {
             }
 
             const batch = writeBatch(firestoreDb)
+            
             const outOfStock = []
 
             objOrder.items.forEach(prod => {

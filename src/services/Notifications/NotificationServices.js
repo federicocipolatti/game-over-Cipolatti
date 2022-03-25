@@ -19,8 +19,8 @@ const NotificationContext = createContext();
 
 export const NotificationServicesProvider = ({ children }) => {
     const [message, setMesagge] = useState('');
+    
     const [severity, setSeverity] = useState('');
-
 
     const setNotification = (severity, message) => {
         setMesagge(message);

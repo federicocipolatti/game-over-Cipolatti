@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import CartContext from '../../context/CartContext/CartContext'
 import { Card, Button } from 'react-bootstrap'
 
-
 const CartItem = ({ id, titulo, quantity, precio, img, subtitulo, category }) => {
     const { removeItem } = useContext(CartContext)
 
