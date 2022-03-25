@@ -21,7 +21,7 @@ const Cart = () => {
     const { products, removeItem, getTotal, clearCart } = useContext(CartContext)
     const contactFormRef = useRef()
 
-    const setNotification = useNotificationServices()
+    const { setNotification } = useNotificationServices()
         
 
     const confirmOrder = () => {
@@ -63,7 +63,7 @@ const Cart = () => {
                 })
             } else {
                 outOfStock.forEach(prod => {
-                    setNotification('error', `El producto ${prod.name} no tiene stock disponible`)
+                    setNotification('error', `El producto ${prod.titulo} no tiene stock disponible`)
                     removeItem(prod.id)
                 })          
             }
@@ -78,10 +78,10 @@ const Cart = () => {
     }
 
     if(products.length === 0) {
-        return <h1>No hay productos en el carrito</h1>
+        return <h1>Tu carrito está vacío!</h1>
     }
 
-    const handleRemoveItem = (id) => {
+    const handleRemoveItem = (id) => { // eslint-disable-line
         removeItem(id)
     }
 

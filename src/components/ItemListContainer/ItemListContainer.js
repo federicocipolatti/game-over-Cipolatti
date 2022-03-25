@@ -3,34 +3,31 @@ import './ItemListContainer.css';
 import { ItemList } from "./ItemList/ItemList";
 import { Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { getDocs, collection, query, where } from "firebase/firestore"; 
-import { firestoreDb } from "../../services/firebase/firebase";
+import { getProducts } from '../../services/firebase/firebase'
+import { useNotificationServices } from "../../services/Notifications/NotificationServices";
 
 export const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]); 
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams();
+    const { setNotification } = useNotificationServices();
 
     useEffect(() => {
-        const collectionRef = categoryId ? 
-            query(collection(firestoreDb, 'products'), where('category', '==', categoryId)) :
-            collection(firestoreDb, 'products') 
+        setLoading(true)
 
-        getDocs(collectionRef)
-        .then(res => {
-            const products = res.docs.map(doc => {
-                return { id: doc.id, ...doc.data() }
-            })
-            setProducts(products);
+        getProducts(categoryId).then(response => {
+            setProducts(response)
+        }).catch((error) => {
+            setNotification('error', error)
+        }).finally(() => {
+            setLoading(false)
         })
-        .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-            setLoading(false);
-        })
-    },[categoryId])
+
+        return (() => {
+            setProducts()
+        })          
+    }, [categoryId]) // eslint-disable-line
 
     return (
         <div className="ItemListContainer">

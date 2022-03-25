@@ -12,7 +12,7 @@ export const ItemDetail = ({ product }) => {
 
     const { addItem } = useContext(CartContext)
 
-    const setNotification = useNotificationServices()
+    const { setNotification } = useNotificationServices()
 
     const handleOnAdd = (quantity) => {
         setQuantity(quantity)
@@ -23,7 +23,6 @@ export const ItemDetail = ({ product }) => {
 
         addItem(productToAdd, quantity)
         setNotification('success',`Se agrego ${product.titulo} al carrito`)
-        console.log(setNotification)
     }
 
     return (
