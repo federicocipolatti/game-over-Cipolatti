@@ -6,7 +6,7 @@ Este proyecto está creado en el ambiente de desarrollo de React.js, por lo que 
 Si no sabes hacer esto, puedes ir a este enlace para ver cómo se hace: https://es.reactjs.org/
 
 **Visuals**
-<img src="img/videoApp.gif"/>
+<a href="#"><img src="img/videoApp.gif" title="GIF app"/></a>
 
 **Librerias**
 
